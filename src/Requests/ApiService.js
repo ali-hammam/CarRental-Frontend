@@ -1,8 +1,9 @@
+import { get as getStorage } from '../Libraries/Storage';
 export default class ApiService  {
   baseURL;
 
   constructor() {
-    this.baseURL = 'http://127.0.0.1:8000'; 
+    this.baseURL = 'http://127.0.0.1:8000/api'; 
   }
 
   async requestHandler  (
@@ -22,14 +23,29 @@ export default class ApiService  {
 
   apiInformation(method = 'GET', body)  {
     const requestInfo = {
+      /*headers: {
+      'Content-Type': 'application/json',
+      },
+      'credentials': 'same-origin',*/
+      headers: this.authHeader(),
       method,
     };
 
     if (body) {
       requestInfo['body'] = JSON.stringify(body.data);
     }
-
+    
     return requestInfo;
+  }
+
+  authHeader() {
+    const requestHeaders  = new Headers();
+    const token = getStorage('jwt') || '';
+    requestHeaders.set('Authorization', 'Bearer '+ token);
+    requestHeaders.set('Cookie', 'Bearer '+ token);
+    requestHeaders.set('credentials', 'include');
+    requestHeaders.set('Content-Type', 'application/json');
+    return requestHeaders; 
   }
 
   formatParams (params) {

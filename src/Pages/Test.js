@@ -1,9 +1,11 @@
 import React from 'react'
+import { TimePicker } from 'antd';
+import moment from 'moment';
 
 const Test = () => {
   return (
     <div>
-      Test
+      <TimePicker minuteStep={15} secondStep={10} />
     </div>
   )
 }

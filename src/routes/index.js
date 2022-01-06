@@ -1,29 +1,33 @@
 import React from 'react';
-import { Route, Routes, useRoutes } from 'react-router-dom';
-import Home from '../Pages/Home';
+import { useRoutes } from 'react-router-dom';
 import Test from '../Pages/Test';
+import Registration from '../Pages/Registration';
+import SignIn from '../Pages/SignIn';
+import Home from '../Pages/Home';
 
-const LoggedInRoutes = () => {
+
+const LoggedInRoutes = ({loggedIn , user}) => {
+  console.log(user);
   
-  let routes = useRoutes([
+  let userRoutes =  useRoutes([
+    { path: "/", element: <Home /> },
+  ]);
+
+  let ownerRoutes = useRoutes([
     { path: "/", element: <Home /> },
     { path: "/test", element: <Test /> },
   ]);
-  
-  return routes;
-  /*return (
-    <Routes>
-      <Route 
-        path='/' 
-        element={Home} 
-      />
 
-      <Route 
-        path='/test'
-        element={Test} 
-      />
-    </Routes>
-  )*/
+  let unAuthorizedRoutes = useRoutes([
+    { path: "/", element: <SignIn /> },
+    { path: "/register", element: <Registration /> },
+  ])
+
+  let temp = user['type'] === 'user' ? userRoutes : ownerRoutes;
+  if(user && user['type'] === 'user'){
+    console.log(user['type'] === 'user');
+  }
+  return loggedIn ? temp : unAuthorizedRoutes;
 }
 
 export default LoggedInRoutes;
