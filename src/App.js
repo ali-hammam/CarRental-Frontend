@@ -19,7 +19,7 @@ const  App = () => {
   useEffect(() => {
     //console.log('isSuccess ' + isSuccess + ' LoggedIn ' + loggedIn);
     if(loggedIn){
-      console.log(data);
+     // console.log(data);
       setUser(data);
     }
   }, [isSuccess]);
@@ -29,7 +29,7 @@ const  App = () => {
   },[])
 
   const isLoggedIn = () => {
-    console.log('ss' + get('jwt'));
+    //console.log('ss' + get('jwt'));
     if(get('jwt') !== '' && get('jwt') != null){
       setLoggedIn(true);
     }else{

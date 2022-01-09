@@ -3,6 +3,8 @@ import { Drawer, Button } from "antd";
 import { Link } from "react-router-dom";
 import LeftMenu from "./left";
 import RightMenu from "./right";
+import RightUser from "./RightUser";
+import RightOwner from "./RightOwner";
 
 const Navbar = ({loggedIn, user}) => {
   const [visible, setVisible] = useState(false);
@@ -23,7 +25,15 @@ const Navbar = ({loggedIn, user}) => {
           <LeftMenu />
         </div>
         <div className="rightMenu">
-          <RightMenu loggedIn={loggedIn} user={user}/>
+          {
+            !loggedIn && <RightMenu /> 
+          }
+          {
+            user['type'] === 'user' && <RightUser loggedIn={loggedIn} user={user}/>
+          }
+          {
+            user['type'] === 'owner' && <RightOwner loggedIn={loggedIn} user={user}/>
+          }
         </div>
         <Button className="barsMenu" type="primary" onClick={() => showDrawer}>
           <span className="barsBtn" />

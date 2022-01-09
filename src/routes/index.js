@@ -1,13 +1,12 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-import Test from '../Pages/Test';
 import Registration from '../Pages/Registration';
 import SignIn from '../Pages/SignIn';
 import Home from '../Pages/Home';
-
+import Agency from '../Pages/Agency';
 
 const LoggedInRoutes = ({loggedIn , user}) => {
-  console.log(user);
+  //console.log(user);
   
   let userRoutes =  useRoutes([
     { path: "/", element: <Home /> },
@@ -15,7 +14,7 @@ const LoggedInRoutes = ({loggedIn , user}) => {
 
   let ownerRoutes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "/test", element: <Test /> },
+    { path: "/agency", element: <Agency /> },
   ]);
 
   let unAuthorizedRoutes = useRoutes([
@@ -25,7 +24,7 @@ const LoggedInRoutes = ({loggedIn , user}) => {
 
   let temp = user['type'] === 'user' ? userRoutes : ownerRoutes;
   if(user && user['type'] === 'user'){
-    console.log(user['type'] === 'user');
+    //console.log(user['type'] === 'user');
   }
   return loggedIn ? temp : unAuthorizedRoutes;
 }

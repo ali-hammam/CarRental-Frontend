@@ -71,6 +71,7 @@ export default class ApiService  {
   get(url = '', params) {
     const paramsString = this.formatParams(params);
     const currentURL = this.baseURL + url + paramsString;
+    console.log(currentURL);
     return this.requestHandler(currentURL, 'GET', undefined);
   }
   

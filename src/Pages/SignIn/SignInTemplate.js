@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Form, Input } from 'antd';
 
 const SignInTemplate = ({setCredentials}) => {
-  //const [credentials, setCredentials] = useState({});
 
   const onFinish = (values) => setCredentials({...values});
 
