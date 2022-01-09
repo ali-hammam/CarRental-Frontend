@@ -4,12 +4,14 @@ import Registration from '../Pages/Registration';
 import SignIn from '../Pages/SignIn';
 import Home from '../Pages/Home';
 import Agency from '../Pages/Agency';
+import List from '../Pages/CarList';
 
 const LoggedInRoutes = ({loggedIn , user}) => {
   //console.log(user);
   
   let userRoutes =  useRoutes([
     { path: "/", element: <Home /> },
+    { path: "/cars", element: <List /> }
   ]);
 
   let ownerRoutes = useRoutes([

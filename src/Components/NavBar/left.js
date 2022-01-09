@@ -11,7 +11,7 @@ const LeftMenu = () => {
           <Link to="/">Home</Link>
         </Menu.Item>
         <Menu.Item key="alipay">
-          <Link to="/contactus">Contact Us</Link>
+          <Link to="/cars">Cars</Link>
         </Menu.Item>
       </Menu>
     );
