@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Row, Col, Input, Button, Select } from 'antd';
 import AgencyRequest from '../../../Requests/AgencyRequest';
+import CarRequest from '../../../Requests/CarRequest';
 
 const {Option} = Select;
 
 const AddCarType = ({agency}) => {
   const [manufacturers, setManufacturer] = useState([]);
   const agencyRequest = AgencyRequest.getInstance();
+  const carRequest = CarRequest.getInstance();
   const {mutate:sendData, data:manufacturersData, isSuccess} = agencyRequest.usGetManufacturersByAgency();
-  const {mutate:sendCarType, isSuccess:isCarTypeMutationSuccess} = agencyRequest.useCarTypeMutate();
+  const {mutate:sendCarType, isSuccess:isCarTypeMutationSuccess} = carRequest.useCarTypeMutate();
 
   useEffect(()=>{
       sendData({agency: agency['id']});

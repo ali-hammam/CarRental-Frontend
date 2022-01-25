@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Row, Col, Button, Form, Input } from 'antd';
 import './registration.css';
-import Country from './Country';
+import SelectCountry from '../../Components/GeneralComponents/SelectCountry';
 
 const UserRegistration = ({setCredentials, countries}) => {
 
@@ -143,7 +143,7 @@ const UserRegistration = ({setCredentials, countries}) => {
             <Input />
           </Form.Item>
         </Col>
-        <Country countries={countries} setSelectedState={setSelectedState}/>
+        <SelectCountry countries={countries} setSelectedState={setSelectedState}/>
       </Row>
       
       <Row>

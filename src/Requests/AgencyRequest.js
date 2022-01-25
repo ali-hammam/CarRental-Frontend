@@ -15,31 +15,9 @@ class AgencyRequest extends ApiService {
     });
   }
 
-  useBranch = () => {
-    return useQuery('branch', () => {
-      return this.get('/branches');
-    }, {
-      select: (response) => {
-        const { data } = response;
-        return data['branches'];
-      }
-    });
-  }
-
   useAgencyMutate = () => {
     return useMutation(({ agency }) => {
       return this.post('/addAgency',  {data: {agency} } );
-    }, {
-      select: (response) => {
-        const { data } = response;
-        return data;
-      }
-    });
-  }
-
-  useBranchMutate = () => {
-    return useMutation(({ branch }) => {
-      return this.post('/addBranch',  {data: branch } );
     }, {
       select: (response) => {
         const { data } = response;
@@ -65,7 +43,6 @@ class AgencyRequest extends ApiService {
     }, {
       select: (response) => {
         const { data } = response;
-        //console.log(data);
         return data;
       }
     });
@@ -77,52 +54,7 @@ class AgencyRequest extends ApiService {
     }, {
       select: (response) => {
         const { data } = response;
-        //console.log(data);
         return data['data']['data'];
-      }
-    });
-  }
-
-  useCarTypeMutate = () => {
-    return useMutation(({ carType }) => {
-      return this.post('/addCarType',  {data: carType } );
-    }, {
-      select: (response) => {
-        const { data } = response;
-        return data;
-      }
-    });
-  }
-
-  useCarMutate = () => {
-    return useMutation(({ car }) => {
-      return this.post('/addCar',  {data: car } );
-    }, {
-      select: (response) => {
-        const { data } = response;
-        return data;
-      }
-    });
-  }
-
-  useCarByBranch = () => {
-    return useMutation(({ branch }) => {
-      return this.post('/carByBranch',  {data: {branch_id: branch} } );
-    }, {
-      select: (response) => {
-        const { data } = response;
-        return data;
-      }
-    });
-  }
-
-  useEditCar = () => {
-    return useMutation(({ data }) => {
-      return this.put('/editCar',  { data } );
-    }, {
-      select: (response) => {
-        const { data } = response;
-        return data;
       }
     });
   }

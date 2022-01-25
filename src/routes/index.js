@@ -5,10 +5,10 @@ import SignIn from '../Pages/SignIn';
 import Home from '../Pages/Home';
 import Agency from '../Pages/Agency';
 import List from '../Pages/CarList';
+import RentedAgencyCars from '../Components/Forms/Car/RentedAgencyCars';
+import Test from '../Pages/Test';
 
-const LoggedInRoutes = ({loggedIn , user}) => {
-  //console.log(user);
-  
+const LoggedInRoutes = ({loggedIn , user}) => {  
   let userRoutes =  useRoutes([
     { path: "/", element: <Home /> },
     { path: "/cars", element: <List /> }
@@ -17,6 +17,8 @@ const LoggedInRoutes = ({loggedIn , user}) => {
   let ownerRoutes = useRoutes([
     { path: "/", element: <Home /> },
     { path: "/agency", element: <Agency /> },
+    { path: "/cars", element: <RentedAgencyCars /> },
+    { path: "/test", element: <Test /> }
   ]);
 
   let unAuthorizedRoutes = useRoutes([
@@ -25,9 +27,7 @@ const LoggedInRoutes = ({loggedIn , user}) => {
   ])
 
   let temp = user['type'] === 'user' ? userRoutes : ownerRoutes;
-  if(user && user['type'] === 'user'){
-    //console.log(user['type'] === 'user');
-  }
+
   return loggedIn ? temp : unAuthorizedRoutes;
 }
 

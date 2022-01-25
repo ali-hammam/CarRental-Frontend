@@ -5,7 +5,7 @@ import AgencyRequest from '../../../Requests/AgencyRequest';
 
 const AddCarManufacturer = ({agency}) => {
   const agencyRequest = AgencyRequest.getInstance();
-  const {mutate: sendData, error: errorResponse, isSuccess} = agencyRequest.useManufacturerMutate();
+  const {mutate: sendData, isSuccess} = agencyRequest.useManufacturerMutate();
 
   useEffect(() => {
     if(isSuccess){

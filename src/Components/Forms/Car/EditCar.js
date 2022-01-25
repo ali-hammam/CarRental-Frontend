@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Row, Col, Input, Button, Select, Collapse } from 'antd';
-import AgencyRequest from '../../../Requests/AgencyRequest';
+import { Form, Row, Col, Button, Select } from 'antd';
+import BranchRequest from '../../../Requests/BranchRequest';
+import CarRequest from '../../../Requests/CarRequest';
 
 const {Option} = Select;
 
 const EditCar = ({agency}) => {
-  const agencyRequest = AgencyRequest.getInstance();
-  const { data: branchesData, isSuccess: isBranchSucess, isLoading: isBranchLoading } = agencyRequest.useBranch();
-  const { mutate: sendBranch, data:carsData ,isSuccess: isCarsSucess } = agencyRequest.useCarByBranch();
-  const { mutate: updateCar ,isSuccess: isCarsUpdateSucess } = agencyRequest.useEditCar();
+  const branchRequest = BranchRequest.getInstance();
+  const carRequest = CarRequest.getInstance();
+  const { data: branchesData, isSuccess: isBranchSucess } = branchRequest.useBranch();
+  const { mutate: sendBranch, data:carsData ,isSuccess: isCarsSucess } = branchRequest.useCarByBranch();
+  const { mutate: updateCar ,isSuccess: isCarsUpdateSucess } = carRequest.useEditCar();
 
   const [branches, setBranches] = useState([]);
   const [cars, setCars] = useState([]);

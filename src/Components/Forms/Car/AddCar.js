@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Form, Row, Col, Input, Button, Select, Collapse } from 'antd';
 import AgencyRequest from '../../../Requests/AgencyRequest';
+import CarRequest from '../../../Requests/CarRequest';
 
 const {Option} = Select;
 const { Panel } = Collapse;
@@ -8,11 +9,11 @@ const { Panel } = Collapse;
 const AddCar = ({agency, branch_id}) => {
   const [carTypes, setCarTypes] = useState([]);
   const agencyRequest = AgencyRequest.getInstance();
+  const carRequest = CarRequest.getInstance();
   const {mutate:sendData, data:carTypesData, isSuccess} = agencyRequest.usGetCarTypeByAgency();
-  const {mutate:sendCar, isSuccess:isCarMutationSuccess} = agencyRequest.useCarMutate();
+  const {mutate:sendCar, isSuccess:isCarMutationSuccess} = carRequest.useCarMutate();
 
   useEffect(()=>{
-    //console.log(agency);
       sendData({agency: agency['id']});
   },[]);
 

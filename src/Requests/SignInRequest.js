@@ -30,14 +30,9 @@ class SignInRequest extends ApiService {
 
   useLogout = () => {
     return useMutation(() => {
-      //const data = user;
       return this.post('/logout');
     }, {
       retry: false,
-      /*select: (response) => {
-        const { data } = response;
-        return data;
-      }*/
     });
   }
 

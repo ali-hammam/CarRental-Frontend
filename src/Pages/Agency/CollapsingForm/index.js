@@ -1,10 +1,10 @@
 import React from 'react';
 import { Collapse } from 'antd';
-import AddBranch from '../Branch/AddBranch';
+import AddBranch from '../../../Components/Forms/Branch/AddBranch';
 import Loader from '../../../Components/Loader';
-import AddCarManufacturer from '../CarManufacturer';
-import AddCarType from '../CarType';
-import EditCar from '../Car/EditCar';
+import AddCarManufacturer from '../../../Components/Forms/CarManufacturer/AddCarManufacturer';
+import AddCarType from '../../../Components/Forms/CarType/AddCarType';
+import EditCar from '../../../Components/Forms/Car/EditCar';
 
 const { Panel } = Collapse;
 

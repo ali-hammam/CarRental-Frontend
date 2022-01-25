@@ -20,14 +20,10 @@ class CountryRequest extends ApiService {
       const data = {'country_id': country};
       return this.post('/states',  {data} );
     }, {
-      //retry: false,
       select: (response) => {
         const { data } = response;
         return data;
       }
-      /*onSuccess: ({data}) => {
-        return data['data'];
-      }*/
     });
   }
 

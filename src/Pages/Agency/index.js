@@ -1,13 +1,12 @@
-import React from 'react'
-import { useEffect, useState } from 'react/cjs/react.development';
+import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'antd';
 import Loader from '../../Components/Loader';
 import AgencyRequest from '../../Requests/AgencyRequest';
-import AddAgency from './AddAgency';
+import AddAgency from '../../Components/Forms/Agency/AddAgency';
 import SideBar from './SideBar';
 import './agency.css';
 import CollapsingForm from './CollapsingForm';
-import AddCar from './Car/AddCar';
+import AddCar from '../../Components/Forms/Car/AddCar';
 
 
 const Agency = () => {
@@ -37,7 +36,7 @@ const Agency = () => {
           <Col xl={Object.keys(agency).length === 0 ? 24 : 5}>
             {
               <div>
-                {Object.keys(agency).length !== 0 && /*branches &&*/ <SideBar agencyName={agency['name']} /*branches={branches}*/ setIsBranch={setIsBranch} />}
+                {Object.keys(agency).length !== 0 && /*branches &&*/ <SideBar agency={agency} agencyName={agency['name']} /*branches={branches}*/ setIsBranch={setIsBranch} />}
               </div>
             }
             {

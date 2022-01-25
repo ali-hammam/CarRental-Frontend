@@ -1,5 +1,4 @@
-import { DatePicker, Space, Select, TimePicker, Form, Button } from 'antd';
-import moment from 'moment';
+import { DatePicker, Select, TimePicker, Form, Button } from 'antd';
 import React, { useEffect, useState } from 'react'
 import RentRequest from '../../Requests/RentRequests';
 
@@ -11,7 +10,7 @@ const RentForm = ({car_id}) => {
   const [from, setFrom] = useState('time');
   const [to, setTo] = useState('time');
   const rentRequest = RentRequest.getInstance();
-  const { mutate: sendRentRequest, data ,isSuccess:isRentSuccess } = rentRequest.useRent();
+  const { mutate: sendRentRequest ,isSuccess:isRentSuccess } = rentRequest.useRent();
 
   useEffect(()=>{
     if(isRentSuccess){
@@ -25,7 +24,7 @@ const RentForm = ({car_id}) => {
     return <DatePicker picker={type} onChange={onChange} />;
   }
 
-  const onFinish = (values) => {
+  const onFinish = () => {
     const rent = {
       pickup,from,to,car_id
     }

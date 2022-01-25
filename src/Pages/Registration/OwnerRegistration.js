@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navigate } from "react-router-dom";
 import { Row, Col, Button, Form, Input } from 'antd';
 import './registration.css';
-import Country from './Country';
+import SelectCountry from '../../Components/GeneralComponents/SelectCountry';
 
 
 const OwnerRegistration = ({setCredentials, countries}) => {
@@ -131,7 +131,7 @@ const OwnerRegistration = ({setCredentials, countries}) => {
       </Row>
       
       <Row>
-        <Country countries={countries} setSelectedState={setSelectedState}/>
+        <SelectCountry countries={countries} setSelectedState={setSelectedState}/>
         <Col xl={8}>
           <Form.Item wrapperCol={{ offset: 6, span: 0 }}>
             <Button type="primary" htmlType="submit" size='large' onSubmit={() =><Navigate to="/" />}>

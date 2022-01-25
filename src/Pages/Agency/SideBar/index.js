@@ -3,13 +3,14 @@ import { Layout, Menu } from 'antd';
 import { HomeFilled } from '@ant-design/icons';
 import './sidebar.css';
 import { Link } from 'react-router-dom';
-import AgencyRequest from '../../../Requests/AgencyRequest';
+//import AgencyRequest from '../../../Requests/AgencyRequest';
+import BranchRequest from '../../../Requests/BranchRequest';
 
-const SideBar = ({agencyName,/*branches,*/ setIsBranch}) => {
+const SideBar = ({agencyName, setIsBranch, agency}) => {
   const { Sider } = Layout;
   const { SubMenu } = Menu;
-  const agencyRequest = AgencyRequest.getInstance();
-  const { data: branchesData, isSuccess: isBranchSucess, isLoading: isBranchLoading } = agencyRequest.useBranch();
+  const branchRequest = BranchRequest.getInstance();
+  const { data: branchesData, isSuccess: isBranchSucess} = branchRequest.useBranch();
   const [branches, setBranches] = useState([]);
   
   useEffect(() =>{
@@ -47,6 +48,21 @@ const SideBar = ({agencyName,/*branches,*/ setIsBranch}) => {
             })
           }
         </Menu.ItemGroup>
+      </SubMenu>
+      <SubMenu 
+          key="sub4"  
+          title={<h1 >Reserved Cars</h1>} 
+          className="user-menu-item menu-items"
+        >
+          {
+            branches && branches.map((branch, index) => {
+              return (
+                <Menu.Item key={branch['id'] + 1} onClick={()=>{setIsBranch(true)} }>
+                  <Link to={'/cars?branch_id='+branch['id']}>{branch['name']}</Link>
+                </Menu.Item>
+              )
+            })
+          }
       </SubMenu>
       </Menu>
     </Sider>

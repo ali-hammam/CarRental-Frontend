@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Form, Row, Col, Input, Button } from 'antd';
 import CountryRequest from '../../../Requests/CountryRequest';
-import Country from '../../Registration/Country';
-import AgencyRequest from '../../../Requests/AgencyRequest';
+import SelectCountry from '../../GeneralComponents/SelectCountry';
+import BranchRequest from '../../../Requests/BranchRequest';
 
 const AddBranch = ({agency}) => {
-  const [countries, setCountries] = useState([]);
+  const [countries] = useState([]);
   const [selectedState, setSelectedState] = useState();
   const countryRequest = CountryRequest.getInstance();
   const {data , isSuccess} = countryRequest.useCountries();
-  const agencyRequest = AgencyRequest.getInstance();
-  const {mutate: sendData, error: errorResponse, isSuccess:isBranchSucess} = agencyRequest.useBranchMutate();
+  const branchRequest = BranchRequest.getInstance();
+  const {mutate: sendData, isSuccess:isBranchSucess} = branchRequest.useBranchMutate();
 
 
   useEffect(() => {
@@ -97,7 +97,7 @@ const AddBranch = ({agency}) => {
             <Input />
           </Form.Item>
         </Col>
-        <Country countries={countries} setSelectedState={setSelectedState}/>
+        <SelectCountry countries={countries} setSelectedState={setSelectedState}/>
         <Form.Item wrapperCol={{ offset: 0, span: 0 }}>
             <Button type="primary" htmlType="submit">
               Add Branch

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Form, Input } from 'antd';
-import AgencyRequest from '../../Requests/AgencyRequest';
-import { useEffect } from 'react/cjs/react.development';
+import AgencyRequest from '../../../Requests/AgencyRequest';
 
 const AddAgency = () => {
   const agencyRequest = AgencyRequest.getInstance();
-  const {mutate: sendData, error: errorResponse, data, isSuccess} = agencyRequest.useAgencyMutate();
+  const {mutate: sendData, isSuccess} = agencyRequest.useAgencyMutate();
 
   const onFinish = (values) => {
     sendData({'agency': values['agency_name']});
