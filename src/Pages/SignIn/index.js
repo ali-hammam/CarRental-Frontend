@@ -11,8 +11,7 @@ const SignIn = () => {
     
   const [credentials, setCredentials] = useState({});
   const signInRequest = SignInRequest.getInstance();
-  const {mutate: sendData, error: errorResponse, data, isSuccess} = signInRequest.useLoginUser();
-  const [name , setName] = useState();
+  const {mutate: sendData, data, isSuccess} = signInRequest.useLoginUser();
 
   useEffect(()=>{
     sendData({user: credentials});

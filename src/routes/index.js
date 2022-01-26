@@ -6,7 +6,6 @@ import Home from '../Pages/Home';
 import Agency from '../Pages/Agency';
 import List from '../Pages/CarList';
 import RentedAgencyCars from '../Components/Forms/Car/RentedAgencyCars';
-import Test from '../Pages/Test';
 
 const LoggedInRoutes = ({loggedIn , user}) => {  
   let userRoutes =  useRoutes([
@@ -18,7 +17,6 @@ const LoggedInRoutes = ({loggedIn , user}) => {
     { path: "/", element: <Home /> },
     { path: "/agency", element: <Agency /> },
     { path: "/cars", element: <RentedAgencyCars /> },
-    { path: "/test", element: <Test /> }
   ]);
 
   let unAuthorizedRoutes = useRoutes([

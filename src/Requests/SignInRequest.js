@@ -39,6 +39,7 @@ class SignInRequest extends ApiService {
   useCreateUser = () => {
     return useMutation(({ user }) => {
       const data = user;
+      console.log(data);
       return this.post('/register',  {data} );
     }, {
       retry: false,

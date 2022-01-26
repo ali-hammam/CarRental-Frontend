@@ -4,6 +4,18 @@ import ApiService from "./ApiService";
 class UserRequest extends ApiService {
   static userService;
 
+  useImageMutate = () => {
+    return useMutation(({ image }) => {
+      console.log(image);
+      return this.post('/addImage',  {data: {image} } );
+    }, {
+      select: (response) => {
+        const { data } = response;
+        return data;
+      }
+    });
+  }
+
   useCars = () => {
     return useQuery('cars', () => {
       return this.get('/cars');

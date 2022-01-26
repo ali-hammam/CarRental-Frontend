@@ -22,6 +22,7 @@ const Registration = () =>{
   useEffect(()=>{
     credentials !== {} && setIsDataGivded(true);
     isDataGived && sendData({user: credentials});
+    //isDataGived && window.location.replace("http://localhost:3000/");
   }, [credentials])
 
   useEffect(() => {

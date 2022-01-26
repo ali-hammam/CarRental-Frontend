@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import { Row, Col, Button, Form, Input } from 'antd';
 import './registration.css';
 import SelectCountry from '../../Components/GeneralComponents/SelectCountry';
+import ImageUploader from '../../Components/GeneralComponents/ImageUploader';
 
 const UserRegistration = ({setCredentials, countries}) => {
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
 
-  const onFinish = (values) => setCredentials({type:'user', state_id:selectedState ,...values});
+  const onFinish = (values) => previewTitle && previewImage && setCredentials({ previewImage,previewTitle, type:'user', state_id:selectedState ,...values});
   const [selectedState, setSelectedState] = useState();
-
+  
   return (
     <Form
       name="registration"
@@ -152,7 +155,7 @@ const UserRegistration = ({setCredentials, countries}) => {
           label="Image"
           name="image"
         >
-          <Input />
+          <ImageUploader setPreviewImage={setPreviewImage} setPreviewTitle={setPreviewTitle}/>
         </Form.Item>
         </Col>
       
